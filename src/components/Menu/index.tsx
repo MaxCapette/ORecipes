@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 
+import { Link } from 'react-router-dom';
 import './styles.scss';
 import { useAppSelector } from '../../hooks/redux';
 
@@ -9,17 +10,17 @@ function Menu() {
 
   return (
     <nav className="menu">
-      <a className="menu-link menu-link--active" href="/">
+      <Link className="menu-link" to="/">
         Accueil
-      </a>
+      </Link>
       {recipes.map((recipe: any) => (
-        <a
+        <Link
           key={recipe.id}
           className="menu-link"
-          href={`/recipe/${recipe.slug}`}
+          to={`/recipe/${recipe.slug}`}
         >
           {recipe.title}
-        </a>
+        </Link>
       ))}
     </nav>
   );

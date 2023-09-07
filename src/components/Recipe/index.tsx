@@ -1,5 +1,6 @@
 /* eslint-disable arrow-body-style */
 import { Navigate, useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 
 import Page from '../Page';
 import AppHeader from '../AppHeader';
@@ -14,6 +15,13 @@ import { findRecipe } from '../../store/selectors/recipes';
 import './styles.scss';
 
 function Recipe() {
+  /* useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }); */
+
   const { slug: slugFromURL } = useParams();
   const recipe = useAppSelector((state) =>
     findRecipe(state.recipes.list, slugFromURL)
