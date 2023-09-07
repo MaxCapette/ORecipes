@@ -1,8 +1,7 @@
-import { useSelector } from 'react-redux';
-
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './styles.scss';
 import { useAppSelector } from '../../hooks/redux';
+import { Recipe } from '../../@types/recipe';
 
 function Menu() {
   const recipes = useAppSelector((state: any) => state.recipes.list);
@@ -10,17 +9,24 @@ function Menu() {
 
   return (
     <nav className="menu">
-      <Link className="menu-link" to="/">
+      <NavLink
+        className={({ isActive }) =>
+          `menu-link ${isActive && 'menu-link--active'}`
+        }
+        to="/"
+      >
         Accueil
-      </Link>
-      {recipes.map((recipe: any) => (
-        <Link
+      </NavLink>
+      {recipes.map((recipe: Recipe) => (
+        <NavLink
           key={recipe.id}
-          className="menu-link"
+          className={({ isActive }) =>
+            `menu-link ${isActive && 'menu-link--active'}`
+          }
           to={`/recipe/${recipe.slug}`}
         >
           {recipe.title}
-        </Link>
+        </NavLink>
       ))}
     </nav>
   );

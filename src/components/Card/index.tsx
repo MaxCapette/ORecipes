@@ -9,7 +9,7 @@ interface CardProps {
 }
 
 function Card({ thumbnail, title, difficulty, slug }: CardProps) {
-  console.log(title);
+  // console.log(title);
 
   return (
     <article className="card">

@@ -3,7 +3,7 @@
 
 import { Recipe } from '../../@types/recipe';
 
-export function findRecipe(recipes: Recipe[], searchedSlug: string) {
+export function findRecipe(recipes: Recipe[], searchedSlug = '') {
   const recipe = recipes.find((testedRecipe) => {
     return testedRecipe.slug === searchedSlug;
   });

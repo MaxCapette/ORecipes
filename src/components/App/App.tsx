@@ -8,7 +8,7 @@ import Error from '../Error';
 import Loading from './Loading';
 
 import './App.scss';
-import actionGetRecipes from '../../middlewares/apiMiddleware';
+import fetchRecipesThunk from '../../middlewares/fetchRecipesThunk';
 import { useAppDispatch } from '../../hooks/redux';
 
 interface AppProps {
@@ -19,8 +19,8 @@ function App({ loading }: AppProps) {
   const dispatch = useAppDispatch();
   const location = useLocation();
   useEffect(() => {
-    dispatch(actionGetRecipes());
-  }, []);
+    dispatch(fetchRecipesThunk());
+  }, [dispatch]);
   useEffect(() => {
     window.scrollTo({
       top: 0,
