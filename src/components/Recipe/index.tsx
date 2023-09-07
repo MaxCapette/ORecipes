@@ -14,7 +14,9 @@ import { findRecipe } from '../../store/selectors/recipes';
 import './styles.scss';
 
 function Recipe() {
-  const recipe = useAppSelector((state) => findRecipe(state.recipes.list, 'crepes-raffinees'));
+  const recipe = useAppSelector((state) =>
+    findRecipe(state.recipes.list, 'crepes-raffinees')
+  );
 
   if (!recipe) {
     return <Navigate to="/error" replace />;
@@ -29,12 +31,8 @@ function Recipe() {
           author={recipe.author}
           difficulty={recipe.difficulty}
         />
-        <Ingredients
-          list={recipe.ingredients}
-        />
-        <Instructions
-          steps={recipe.instructions}
-        />
+        <Ingredients list={recipe.ingredients} />
+        <Instructions steps={recipe.instructions} />
       </div>
     </Page>
   );

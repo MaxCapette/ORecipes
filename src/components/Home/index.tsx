@@ -5,6 +5,8 @@ import { useAppSelector } from '../../hooks/redux';
 
 function Home() {
   const recipes = useAppSelector((state) => state.recipes.list);
+  // console.log(recipes);
+
   return (
     <Page>
       <AppHeader />
