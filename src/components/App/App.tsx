@@ -7,12 +7,10 @@ import Menu from '../Menu';
 import Recipe from '../Recipe';
 import FavPage from '../FavPage/FavPage';
 import Error from '../Error';
-
+import checkLocalStorage from '../../middlewares/localStorageThunk';
 import Loading from './Loading';
 
 import './App.scss';
-import { getJWTToLocalStorage } from '../../localStorage/localStorage';
-import checkLocalStorage from '../../middlewares/localStorageThunk';
 
 function App() {
   const dispatch = useAppDispatch();
