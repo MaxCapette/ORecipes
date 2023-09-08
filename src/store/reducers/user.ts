@@ -9,6 +9,7 @@ interface UserState {
   };
   pseudo: null | string;
   errorMessage: null | string;
+  token: null | string;
 }
 export const initialState: UserState = {
   logged: false,
@@ -18,6 +19,7 @@ export const initialState: UserState = {
   },
   pseudo: null,
   errorMessage: null,
+  token: null,
 };
 
 export const setCredentials = createAction<{
@@ -25,6 +27,7 @@ export const setCredentials = createAction<{
   inputName: 'email' | 'password';
 }>('user/SET_CREDENTIALS');
 
+export const logOut = createAction('user/LOGOUT');
 const userReducer = createReducer(initialState, (builder) => {
   builder
     .addCase(setCredentials, (state, action) => {
@@ -37,6 +40,9 @@ const userReducer = createReducer(initialState, (builder) => {
     })
     .addCase(checkLogin.rejected, (state, action) => {
       state.errorMessage = 'Erreur de connexion';
+    })
+    .addCase(logOut, (state, action) => {
+      state.logged = false;
     });
 });
 

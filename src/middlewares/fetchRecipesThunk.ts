@@ -1,13 +1,18 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import myAxiosInstance from './axios';
 
-const fetchRecipesThunk = createAsyncThunk('recipes/GET_RECIPES', async () => {
-  const result = await axios.get(
-    'https://orecipes-api.onrender.com/api/recipes/'
-  );
-  // console.log(result);
+export const fetchRecipesThunk = createAsyncThunk(
+  'recipes/GET_RECIPES',
+  async () => {
+    const result = await myAxiosInstance.get('/recipes/');
+    return result.data;
+  }
+);
 
-  return result.data;
-});
-
-export default fetchRecipesThunk;
+export const fetchFavRecipesThunk = createAsyncThunk(
+  'recipes/FETCH_FAV_RECIPES',
+  async () => {
+    const result = await myAxiosInstance.get('/favorites');
+    return result.data.favorites;
+  }
+);

@@ -2,7 +2,7 @@ import './styles.scss';
 import logo from '../../assets/logo.png';
 import LoginForm from '../LoginForm';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { setCredentials } from '../../store/reducers/user';
+import { logOut, setCredentials } from '../../store/reducers/user';
 import checkLogin from '../../middlewares/loginThunk';
 
 function AppHeader() {
@@ -32,9 +32,10 @@ function AppHeader() {
           }}
           handleLogout={() => {
             console.log('handleLogout executé');
+            dispatch(logOut());
           }}
           isLogged={logged}
-          loggedMessage={`Bonjour ${pseudo} vous êtes bien connecté`}
+          loggedMessage={`Bonjour ${pseudo} `}
         />
         {errorMessage && <div className="error">{errorMessage}</div>}
       </div>

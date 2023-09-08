@@ -1,15 +1,16 @@
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
+import { fetchRecipesThunk } from '../../middlewares/fetchRecipesThunk';
+import { useAppDispatch } from '../../hooks/redux';
 import Home from '../Home';
 import Menu from '../Menu';
 import Recipe from '../Recipe';
+import FavPage from '../FavPage/FavPage';
 import Error from '../Error';
 
 import Loading from './Loading';
 
 import './App.scss';
-import fetchRecipesThunk from '../../middlewares/fetchRecipesThunk';
-import { useAppDispatch } from '../../hooks/redux';
 
 interface AppProps {
   loading?: boolean;
@@ -36,6 +37,7 @@ function App({ loading }: AppProps) {
       <Menu />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/recipes-fav" element={<FavPage />} />
         <Route path="/recipe/:slug" element={<Recipe />} />
         <Route path="*" element={<Error />} />
       </Routes>
