@@ -1,5 +1,6 @@
 import { createAction, createReducer } from '@reduxjs/toolkit';
 import checkLogin from '../../middlewares/loginThunk';
+import checkLocalStorage from '../../middlewares/localStorageThunk';
 
 interface UserState {
   logged: boolean;
@@ -38,11 +39,15 @@ const userReducer = createReducer(initialState, (builder) => {
       state.pseudo = action.payload.pseudo;
       state.errorMessage = '';
     })
-    .addCase(checkLogin.rejected, (state, action) => {
+    .addCase(checkLogin.rejected, (state) => {
       state.errorMessage = 'Erreur de connexion';
     })
-    .addCase(logOut, (state, action) => {
+    .addCase(logOut, (state) => {
       state.logged = false;
+    })
+    .addCase(checkLocalStorage.fulfilled, (state, action) => {
+      state.token = action.payload;
+      state.logged = true;
     });
 });
 

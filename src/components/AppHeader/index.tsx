@@ -24,13 +24,16 @@ function AppHeader() {
           password={passwordFromStore}
           changeField={(inputValue, inputName) => {
             dispatch(setCredentials({ inputValue, inputName }));
+            // eslint-disable-next-line no-console
             console.log('hangeField executé');
           }}
           handleLogin={() => {
+            // eslint-disable-next-line no-console
             console.log('handleLogin executé');
             dispatch(checkLogin());
           }}
           handleLogout={() => {
+            // eslint-disable-next-line no-console
             console.log('handleLogout executé');
             dispatch(logOut());
           }}

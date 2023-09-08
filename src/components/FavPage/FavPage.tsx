@@ -11,6 +11,7 @@ function FavPage() {
 
   useEffect(() => {
     dispatch(fetchFavRecipesThunk());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // on va chercher dans le state la liste des recettes pref

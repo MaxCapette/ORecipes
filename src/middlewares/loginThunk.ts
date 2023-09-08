@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { RootState } from '../store';
+import type { RootState } from '../store';
 import myAxiosInstance from './axios';
+import { saveJWTToLocalStorage } from '../localStorage/localStorage';
 
 const checkLogin = createAsyncThunk('user/CHECK_LOGIN', async (_, thunkAPI) => {
   const state = thunkAPI.getState() as RootState;
@@ -10,7 +11,8 @@ const checkLogin = createAsyncThunk('user/CHECK_LOGIN', async (_, thunkAPI) => {
   });
   myAxiosInstance.defaults.headers.common.Authorization = `Bearer ${result.data.token}`;
 
-  console.log(result.data);
+  saveJWTToLocalStorage(result.data.token);
+  // console.log(result.data);
 
   return result.data as { pseudo: string; token: string };
 });
