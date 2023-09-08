@@ -6,7 +6,13 @@
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
+  align-items: flex-start;
   &-logo {
     width: 50px;
+  }
+  .error {
+    color: red;
+    font-size: 0.8em;
+    font-style: italic;
   }
 }
