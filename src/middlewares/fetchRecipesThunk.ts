@@ -4,7 +4,7 @@ import myAxiosInstance from './axios';
 export const fetchRecipesThunk = createAsyncThunk(
   'recipes/GET_RECIPES',
   async () => {
-    const result = await myAxiosInstance.get('/recipes/');
+    const result = await myAxiosInstance.get('/recipes');
     return result.data;
   }
 );
